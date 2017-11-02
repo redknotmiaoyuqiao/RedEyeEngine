@@ -1,5 +1,5 @@
 #include "Engine.hpp"
-#include "DEBUG/Debug.hpp"
+#include "RedLog/Debug.hpp"
 #include <string>
 
 Model::Model(std::string path)

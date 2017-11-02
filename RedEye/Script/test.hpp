@@ -2,7 +2,7 @@
 
 #include "Engine/Engine.hpp"
 #include "Component/Component.hpp"
-#include "DEBUG/Debug.hpp"
+#include "RedLog/Debug.hpp"
 #include "RedGL/RedGL.hpp"
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>

@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\User">
+      <UniqueIdentifier>{9906efa9-e3e2-46ef-b251-eb6b3e25028e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -34,6 +37,12 @@
   <ItemGroup>
     <ClInclude Include="Engine.hpp">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Script\PBR.hpp">
+      <Filter>头文件\User</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Script\test.hpp">
+      <Filter>头文件\User</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

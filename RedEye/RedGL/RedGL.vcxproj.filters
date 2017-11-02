@@ -38,7 +38,7 @@
     <ClInclude Include="redgl.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\DEBUG\Debug.hpp">
+    <ClInclude Include="..\RedLog\Debug.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

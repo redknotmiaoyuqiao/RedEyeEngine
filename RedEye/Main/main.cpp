@@ -1,4 +1,4 @@
-#include "DEBUG/Debug.hpp"
+#include "RedLog/Debug.hpp"
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>  
 
@@ -36,7 +36,7 @@ int main()
 	int width = 2560;
 	int height = 1600;
 
-	bool isFullScreen = false;
+	bool isFullScreen = true;
 	GLFWmonitor* pMonitor = isFullScreen ? glfwGetPrimaryMonitor() : NULL;
 
 	window = glfwCreateWindow(width, height, "RedEye", pMonitor, NULL);

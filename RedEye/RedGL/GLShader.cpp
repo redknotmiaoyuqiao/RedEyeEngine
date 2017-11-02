@@ -1,5 +1,5 @@
 #include "RedGL.hpp"
-#include "DEBUG/Debug.hpp"
+#include "RedLog/Debug.hpp"
 
 GLShader::GLShader(GLenum type, const GLchar * src)
 {

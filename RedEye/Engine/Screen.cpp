@@ -1,5 +1,5 @@
 #include "Engine/Engine.hpp"
-#include "DEBUG/Debug.hpp"
+#include "RedLog/Debug.hpp"
 #include <iostream>
 
 Screen * Screen::m_pInstance = NULL;

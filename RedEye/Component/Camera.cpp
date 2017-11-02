@@ -1,5 +1,5 @@
 #include "Component/Component.hpp"
-#include "DEBUG/Debug.hpp"
+#include "RedLog/Debug.hpp"
 #include <glm/glm.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>

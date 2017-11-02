@@ -1,6 +1,6 @@
 #include "Engine.hpp"
 #include "RedGL/RedGL.hpp"
-#include "DEBUG/Debug.hpp"
+#include "RedLog/Debug.hpp"
 #include "SHADER/Shader.hpp"
 #include "File/File.hpp"
 #include "Script/Test.hpp"

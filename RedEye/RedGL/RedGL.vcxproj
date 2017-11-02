@@ -124,7 +124,7 @@
     <ClCompile Include="GLVAO.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\DEBUG\Debug.hpp" />
+    <ClInclude Include="..\RedLog\Debug.hpp" />
     <ClInclude Include="redgl.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
