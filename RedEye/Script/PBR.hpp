@@ -70,8 +70,20 @@ public:
         brdfShader = new GLProgram(brdf_vertex_shader,brdf_fragment_shader);
 
         //teaModel = new Model("/Users/redknot/Red3DEngine/3dModel/Cerberus_by_Andrew_Maximov/Cerberus_LP");
-        teaModel = new Model("c://Red3DEngine/3dModel/coat/Model");
+        teaModel = new Model("C://RedEyeEngine/res/3dcoat/M");
 
+		albedoMap = new GLTexture();
+		albedoMap->LoadImage("C://RedEyeEngine/res/3dcoat/color.jpg");
+		metallicMap = new GLTexture();
+		metallicMap->LoadImage("C://RedEyeEngine/res/3dcoat/metalness.jpg");
+		roughnessMap = new GLTexture();
+		roughnessMap->LoadImage("C://RedEyeEngine/res/3dcoat/gloss.jpg");
+		normalMap = new GLTexture();
+		normalMap->LoadImage("C://RedEyeEngine/res/3dcoat/nmap.jpg");
+		aoMap = new GLTexture();
+		aoMap->LoadImage("C://RedEyeEngine/res/3dcoat/ao.jpg");
+
+		/*
         albedoMap = new GLTexture();
         albedoMap->LoadImage("c://Red3DEngine/3dModel/coat/T/export3dcoat_lambert3SG_color.jpeg");
         metallicMap = new GLTexture();
@@ -82,6 +94,7 @@ public:
         normalMap->LoadImage("c://Red3DEngine/3dModel/coat/T/export3dcoat_lambert3SG_nmap.jpg");
         aoMap = new GLTexture();
         aoMap->LoadImage("c://Red3DEngine/3dModel/coat/T/materialball_ao.jpg");
+		*/
 
         /*
         albedoMap = new GLTexture();
@@ -553,4 +566,6 @@ private:
 
         this->mainCamera->setCameraFront(front.x,front.y,front.z);
     }
+
+
 };
