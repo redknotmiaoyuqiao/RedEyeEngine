@@ -53,7 +53,7 @@ public:
     GLVAO();
     ~GLVAO();
     void SetEBO(GLuint * EBOdata,int bufferSize);
-    void AddVBO(GLfloat * VBOdata,int bufferSize,int layout,int size = 3);
+    void AddVBO(GLfloat * VBOdata, int bufferSize, int layout, int size = 3, GLsizei stride = 0);
     void DrawVAO();
     void DeleteVAO();
 };
@@ -67,6 +67,7 @@ public:
     GLTexture();
     ~GLTexture();
     void LoadImage(char * filePath);
+	void LoadHdrImage(char * filePath);
     void SetData(unsigned char * data,int width,int height,GLenum internalFormat,GLenum format);
     void SetCharData(unsigned char * data,int width,int height);
 };

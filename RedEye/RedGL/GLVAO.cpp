@@ -24,7 +24,7 @@ void GLVAO::SetEBO(GLuint * EBOdata,int bufferSize)
     glBindVertexArray(0);
 }
 
-void GLVAO::AddVBO(GLfloat * VBOdata,int bufferSize,int layout,int size)
+void GLVAO::AddVBO(GLfloat * VBOdata,int bufferSize,int layout,int size, GLsizei stride)
 {
     glBindVertexArray(VAOId);
 
@@ -34,7 +34,7 @@ void GLVAO::AddVBO(GLfloat * VBOdata,int bufferSize,int layout,int size)
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, bufferSize, VBOdata, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(layout, size, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
+    glVertexAttribPointer(layout, size, GL_FLOAT, GL_FALSE, stride, (GLvoid*)0);
     glEnableVertexAttribArray(layout);
 
     glBindVertexArray(0);

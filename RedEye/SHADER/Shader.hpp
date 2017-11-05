@@ -279,7 +279,9 @@ static const char * PBR_FRAGMENT = SHADER(
                 FragColor = vec4(color , 1.0);
 
 
-                //FragColor = vec4(texture(aoMap, TexCoords).xyz  , 1.0);
+
+
+                //FragColor = vec4(texture(brdfLUT, TexCoords).xyz  , 1.0);
             }
             );
 

@@ -7,10 +7,17 @@ GLTexture::GLTexture()
     glGenTextures(1, &TextureId);
     glBindTexture(GL_TEXTURE_2D, TextureId);
 
+	/*
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	*/
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     glBindTexture(GL_TEXTURE_2D, 0);
 }
@@ -32,10 +39,31 @@ void GLTexture::LoadImage(char * filePath)
     unsigned char * image = imageFile->ReadImage(filePath,&width,&height,&nrChannels);
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	
     glBindTexture(GL_TEXTURE_2D, 0);
 
     delete imageFile;
     free(image);
+}
+
+void GLTexture::LoadHdrImage(char * filePath)
+{
+	glBindTexture(GL_TEXTURE_2D, TextureId);
+
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+	int width, height, nrChannels;
+
+	ImageFile * imageFile = new ImageFile();
+	float * image = imageFile->ReadHdrImage(filePath, &width, &height, &nrChannels);
+
+	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, image);
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	delete imageFile;
+	free(image);
 }
 
 void GLTexture::SetData(unsigned char * data,int width,int height,GLenum internalFormat,GLenum format)

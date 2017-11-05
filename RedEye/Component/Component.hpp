@@ -35,6 +35,24 @@ public:
     ~Spirit();
 };
 
+class Skybox {
+private:
+	GLuint irradianceTexture;
+	GLuint prefilterTexture;
+	GLuint brdfLUTTexture;
+public:
+	GLuint getIrradianceTexture();
+	GLuint getPrefilterTexture();
+	GLuint getBrdfLUTTexture();
+};
+
+class HdriSkybox : public Skybox {
+private:
+	GLTexture * hdriTexture;
+public:
+	HdriSkybox(char * filePath);
+};
+
 /*
  *
  * 灯光

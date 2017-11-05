@@ -16,6 +16,9 @@
     <Filter Include="头文件\User">
       <UniqueIdentifier>{9906efa9-e3e2-46ef-b251-eb6b3e25028e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Shader">
+      <UniqueIdentifier>{ded270fa-8622-441a-b249-cb7c56535bc3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -43,6 +46,12 @@
     </ClInclude>
     <ClInclude Include="..\Script\test.hpp">
       <Filter>头文件\User</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHADER\Header.hpp">
+      <Filter>头文件\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHADER\Shader.hpp">
+      <Filter>头文件\Shader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
