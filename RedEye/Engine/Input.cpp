@@ -12,7 +12,9 @@ Input * Input::getInstance()
 
 Input::Input()
 {
-
+	for (int i = 0; i < 1024;i++) {
+		this->keys[i] = false;
+	}
 }
 
 void Input::setMousePoint(float x,float y)

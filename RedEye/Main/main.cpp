@@ -63,7 +63,7 @@ int main()
 	// glad≥ı ºªØ  
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
-		printf("º”‘ÿ ß∞‹");
+		RedLog("º”‘ÿ ß∞‹");
 		return -1;
 	}
 	/*

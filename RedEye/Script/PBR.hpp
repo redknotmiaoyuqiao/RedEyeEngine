@@ -8,6 +8,8 @@
 #include <gtc/type_ptr.hpp>
 #include <glad/glad.h>
 
+#include <GLFW/glfw3.h>
+
 #include <File/IMAGE/stb_image.h>
 
 class PBR : public RedEyeBehaviour{
@@ -336,6 +338,7 @@ public:
         glDepthFunc(GL_LEQUAL);
 
         Mouse();
+		WASD();
         target->setWidthAndHeight(screen->getWidth(),screen->getHeight());
         target->useFrameBuffer();
         mainCamera->setCameraWidthHeight(screen->getWidth(),screen->getHeight());
@@ -546,7 +549,7 @@ private:
         lastX = xpos;
         lastY = ypos;
 
-        GLfloat sensitivity = 0.5f;
+        GLfloat sensitivity = 0.2f;
         xoffset *= sensitivity;
         yoffset *= sensitivity;
 
@@ -566,6 +569,38 @@ private:
 
         this->mainCamera->setCameraFront(front.x,front.y,front.z);
     }
+
+
+	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, -15.0f);
+	glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+	glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
+	void WASD() {
+		Input * input = Input::getInstance();
+		GLfloat cameraSpeed = 0.1f;
+		if (input->keys[GLFW_KEY_W]) {
+			cameraPos += cameraSpeed * cameraFront;
+		}
+		if (input->keys[GLFW_KEY_S]) {
+			cameraPos -= cameraSpeed * cameraFront;
+		}
+		if (input->keys[GLFW_KEY_A]) {
+			cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+		}
+		if (input->keys[GLFW_KEY_D]) {
+			cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+		}
+
+		cameraFront.x = mainCamera->cameraFront[0];
+		cameraFront.y = mainCamera->cameraFront[1];
+		cameraFront.z = mainCamera->cameraFront[2];
+		
+		mainCamera->cameraPos[0] = cameraPos.x;
+		mainCamera->cameraPos[1] = cameraPos.y;
+		mainCamera->cameraPos[2] = cameraPos.z;
+		
+
+	}
 
 
 };
