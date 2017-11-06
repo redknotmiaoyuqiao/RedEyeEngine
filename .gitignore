@@ -249,3 +249,8 @@ paket-files/
 
 RedEye/out
 RedEye/bin
+
+
+*.user
+
+.DS_Store
