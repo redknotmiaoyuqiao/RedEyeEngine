@@ -71,19 +71,18 @@ public:
 		prefilterShader = new GLProgram(prefilter_vertex_shader, prefilter_fragment_shader);
 		brdfShader = new GLProgram(brdf_vertex_shader, brdf_fragment_shader);
 
-		//teaModel = new Model("/Users/redknot/Red3DEngine/3dModel/Cerberus_by_Andrew_Maximov/Cerberus_LP");
 		teaModel = new Model("C://RedEyeEngine/res/3dcoat/M");
 
 		albedoMap = new GLTexture();
-		albedoMap->LoadImage("C://RedEyeEngine/res/3dcoat/color.jpg");
+        albedoMap->LoadImage("/Users/redknot/RedEyeEngine/res/3dcoat/color.jpg");
 		metallicMap = new GLTexture();
-		metallicMap->LoadImage("C://RedEyeEngine/res/3dcoat/metalness.jpg");
+        metallicMap->LoadImage("/Users/redknot/RedEyeEngine/res/3dcoat/metalness.jpg");
 		roughnessMap = new GLTexture();
-		roughnessMap->LoadImage("C://RedEyeEngine/res/3dcoat/gloss.jpg");
+        roughnessMap->LoadImage("/Users/redknot/RedEyeEngine/res/3dcoat/gloss.jpg");
 		normalMap = new GLTexture();
-		normalMap->LoadImage("C://RedEyeEngine/res/3dcoat/nmap.jpg");
+        normalMap->LoadImage("/Users/redknot/RedEyeEngine/res/3dcoat/nmap.jpg");
 		aoMap = new GLTexture();
-		aoMap->LoadImage("C://RedEyeEngine/res/3dcoat/ao.jpg");
+        aoMap->LoadImage("/Users/redknot/RedEyeEngine/res/3dcoat/ao.jpg");
 
 		/*
 		albedoMap = new GLTexture();
@@ -144,7 +143,7 @@ public:
 		target = new GLRenderTarget(screen->getWidth(), screen->getHeight(), RED_TARGET_SCREEN);
 
 		GLTexture * HrdTexture = new GLTexture();
-		HrdTexture->LoadHdrImage("c://Red3DEngine/Texture/hdr/newport_loft.hdr");
+        HrdTexture->LoadHdrImage("/Users/redknot/Red3DEngine/Texture/hdr/newport_loft.hdr");
 
 		GLuint hdrTexture = HrdTexture->TextureId;
 
