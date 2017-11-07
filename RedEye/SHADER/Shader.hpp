@@ -79,28 +79,28 @@ static const char * s_FRAGMENT = SHADER(
              *
              */
 
-            static const char * PBR_VERTEX = SHADER(
-                            layout (location = 0) in vec3 aPos;
-                            layout (location = 1) in vec3 aNormal;
-                            layout (location = 2) in vec3 aTexCoords;
+static const char * PBR_VERTEX = SHADER(
+            layout (location = 0) in vec3 aPos;
+            layout (location = 1) in vec3 aNormal;
+            layout (location = 2) in vec3 aTexCoords;
 
-                            out vec2 TexCoords;
-                            out vec3 WorldPos;
-                            out vec3 Normal;
+            out vec2 TexCoords;
+            out vec3 WorldPos;
+            out vec3 Normal;
 
-                            uniform mat4 projection;
-                            uniform mat4 view;
-                            uniform mat4 model;
+            uniform mat4 projection;
+            uniform mat4 view;
+            uniform mat4 model;
 
-                            void main()
-                            {
-                                TexCoords = aTexCoords.xy;
-                                WorldPos = vec3(model * vec4(aPos, 1.0));
-                                Normal = mat3(model) * aNormal;
+            void main()
+            {
+                TexCoords = aTexCoords.xy;
+                WorldPos = vec3(model * vec4(aPos, 1.0));
+                Normal = mat3(model) * aNormal;
 
-                                gl_Position =  projection * view * vec4(WorldPos, 1.0);
-                            }
-                        );
+                gl_Position =  projection * view * vec4(WorldPos, 1.0);
+            }
+        );
 
 
 static const char * PBR_FRAGMENT = SHADER(
@@ -199,8 +199,8 @@ static const char * PBR_FRAGMENT = SHADER(
             {
                 // material properties
                 vec3 albedo = pow(texture(albedoMap, TexCoords).rgb, vec3(2.2));
-                float metallic = texture(metallicMap, TexCoords).r;
-                float roughness = texture(roughnessMap, TexCoords).r;
+                float metallic = texture(metallicMap, TexCoords).r * 1.5;
+                float roughness = texture(roughnessMap, TexCoords).r * 0.3;
                 float ao = texture(aoMap, TexCoords).r;
 
                 // input lighting data

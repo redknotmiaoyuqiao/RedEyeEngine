@@ -1,6 +1,7 @@
 #include "RedGL.hpp"
 #include <glad/glad.h>
 #include "File/File.hpp"
+#include "RedLog/Debug.hpp"
 
 GLTexture::GLTexture()
 {
@@ -56,6 +57,8 @@ void GLTexture::LoadHdrImage(char * filePath)
 
 	ImageFile * imageFile = new ImageFile();
 	float * image = imageFile->ReadHdrImage(filePath, &width, &height, &nrChannels);
+
+	RedLog("\n----------------------------------\nWidth: %d\nHeight: %d\n----------------------------------\n", width, height);
 
 	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, image);

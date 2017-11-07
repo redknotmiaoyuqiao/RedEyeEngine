@@ -90,8 +90,10 @@ private:
 
     unsigned int * arrayIndices;
 public:
+	char * name;
+
     GLVAO * vao;
-    Mesh(std::vector<Vertex*> * vertices, std::vector<GLuint> * indices);
+    Mesh(std::vector<Vertex*> * vertices, std::vector<GLuint> * indices,char * name);
     ~Mesh();
     void DrawVAO();
 };

@@ -36,6 +36,9 @@ int main()
 	int width = 2560;
 	int height = 1600;
 
+	//int width = 800;
+	//int height = 640;
+
 	bool isFullScreen = false;
 	GLFWmonitor* pMonitor = isFullScreen ? glfwGetPrimaryMonitor() : NULL;
 
@@ -53,6 +56,8 @@ int main()
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, mouse_callback);
+
+	glfwSetInputMode(window, GLFW_CURSOR,GLFW_CURSOR_DISABLED);
 
 	int scrWidth, scrHeight;
 	glfwGetFramebufferSize(window, &scrWidth, &scrHeight);

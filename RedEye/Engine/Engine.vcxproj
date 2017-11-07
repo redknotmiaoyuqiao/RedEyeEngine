@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Script\PBR.hpp" />
+    <ClInclude Include="..\Script\Sky.hpp" />
     <ClInclude Include="..\Script\test.hpp" />
     <ClInclude Include="..\SHADER\Header.hpp" />
     <ClInclude Include="..\SHADER\Shader.hpp" />

@@ -5,32 +5,30 @@
 #include "File/File.hpp"
 #include "Script/Test.hpp"
 #include "Script/PBR.hpp"
+#include "Script/Sky.hpp"
 
 RedEyeBehaviour * test;
 RedEyeBehaviour * pbr;
+
+RedEyeBehaviour * sky;
 
 void Engine::Start()
 {
     RedLog("Engine Start !!!!");
 
-    //test = new Test();
-    pbr = new PBR();
-    //test->Start();
-    pbr->Start();
+	sky = new Sky();
+	sky->Start();
+
 }
 
 void Engine::Update()
 {
-    //test->Update();
-    pbr->Update();
+	sky->Update();
 }
 
 void Engine::End()
 {
-    //test->End();
-    //delete test;
+	sky->End();
 
-    pbr->End();
-
-    delete pbr;
+	delete sky;
 }
