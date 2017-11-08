@@ -58,7 +58,7 @@ public:
         glEnable(GL_CULL_FACE);
         glFrontFace(GL_CCW);
 
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
         Screen * screen = Screen::getInstance();
         mainCamera = new Camera(30.0f,screen->getWidth(),screen->getHeight(),0.1f,1000.0f);
@@ -73,6 +73,7 @@ public:
 
         //teaModel = new Model("/Users/redknot/Red3DEngine/3dModel/Cerberus_by_Andrew_Maximov/Cerberus_LP");
         teaModel = new Model("/Users/redknot/RedEyeEngine/res/3dcoat/M");
+
 
 		albedoMap = new GLTexture();
         albedoMap->LoadImage("/Users/redknot/RedEyeEngine/res/3dcoat/color.jpg");
@@ -360,7 +361,7 @@ public:
         glm::mat4 model;
         model = glm::scale(model,glm::vec3(0.3f));
         //model = glm::rotate(model,glm::radians(90.0f),glm::vec3(-1.0f,0.0f,0.0f));
-        model = glm::rotate(model,glm::radians(w),glm::vec3(1.0f,0.0f,0.0f));
+        model = glm::rotate(model,glm::radians(w),glm::vec3(0.0f,1.0f,0.0f));
         w = w + 0.5f;
         pbr->putMatrix4fv("model",glm::value_ptr(model));
         pbr->putMatrix4fv("projection",glm::value_ptr(mainCamera->getProjection()));

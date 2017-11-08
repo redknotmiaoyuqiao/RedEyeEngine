@@ -128,11 +128,7 @@ static const char * PBR_FRAGMENT = SHADER(
             uniform vec3 camPos;
 
             const float PI = 3.14159265359;
-            // ----------------------------------------------------------------------------
-            // Easy trick to get tangent-normals to world-space to keep PBR code simplified.
-            // Don't worry if you don't get what's going on; you generally want to do normal
-            // mapping the usual way for performance anways; I do plan make a note of this
-            // technique somewhere later in the normal mapping tutorial.
+
             vec3 getNormalFromMap()
             {
                 vec3 tangentNormal = texture(normalMap, TexCoords).xyz * 2.0 - 1.0;
@@ -199,8 +195,8 @@ static const char * PBR_FRAGMENT = SHADER(
             {
                 // material properties
                 vec3 albedo = pow(texture(albedoMap, TexCoords).rgb, vec3(2.2));
-                float metallic = texture(metallicMap, TexCoords).r;
-                float roughness = texture(roughnessMap, TexCoords).r;
+                float metallic = texture(metallicMap, TexCoords).r * 1.5;
+                float roughness = texture(roughnessMap, TexCoords).r * 0.5;
                 float ao = texture(aoMap, TexCoords).r;
 
                 // input lighting data
@@ -261,7 +257,6 @@ static const char * PBR_FRAGMENT = SHADER(
                 vec3 irradiance = texture(irradianceMap, N).rgb;
                 vec3 diffuse      = irradiance * albedo;
 
-                // sample both the pre-filter map and the BRDF lut and combine them together as per the Split-Sum approximation to get the IBL specular part.
                 const float MAX_REFLECTION_LOD = 4.0;
                 vec3 prefilteredColor = textureLod(prefilterMap, R,  roughness * MAX_REFLECTION_LOD).rgb;
                 vec2 brdf  = texture(brdfLUT, vec2(max(dot(N, V), 0.0), roughness)).rg;
@@ -281,7 +276,7 @@ static const char * PBR_FRAGMENT = SHADER(
 
 
 
-               //FragColor = vec4(texture(metallicMap, TexCoords).xyz  , 1.0);
+               //FragColor = vec4(texture(brdfLUT, TexCoords).xyz  , 1.0);
             }
             );
 
