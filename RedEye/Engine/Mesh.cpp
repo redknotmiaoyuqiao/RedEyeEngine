@@ -1,11 +1,11 @@
 #include "Engine/Engine.hpp"
 #include "RedLog/Debug.hpp"
 
-Mesh::Mesh(std::vector<Vertex*> * vertices, std::vector<GLuint> * indices, char * name)
+Mesh::Mesh(std::vector<Vertex*> * vertices, std::vector<GLuint> * indices, std::string name)
 {
 	this->name = name;
 
-	RedLog("\nMesh Name: %s",this->name);
+	RedLog("\nMesh Name: %s",this->name.c_str());
 
     this->vao = new GLVAO();
     this->vertices = vertices;

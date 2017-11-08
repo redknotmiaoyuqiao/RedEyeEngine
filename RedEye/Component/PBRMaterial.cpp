@@ -61,7 +61,7 @@ void PBRMaterial::Use()
 	glProgram->UseProgram();
 
 	glm::mat4 model;
-	model = glm::scale(model, glm::vec3(0.3f));
+	model = glm::scale(model, glm::vec3(3.3f));
 	//model = glm::rotate(model,glm::radians(90.0f),glm::vec3(-1.0f,0.0f,0.0f));
 	glProgram->putMatrix4fv("model", glm::value_ptr(model));
 	glProgram->putMatrix4fv("projection", glm::value_ptr(camera->getProjection()));

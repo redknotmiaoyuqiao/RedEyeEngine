@@ -73,7 +73,9 @@ Model::Model(std::string path)
         free(tangentsArray);
         free(indicesArray);
 
-        Mesh * mesh = new Mesh(vertices,indices,(char *)("part" + intToString(index)).c_str());
+
+		std::string name = "part" + intToString(index);
+        Mesh * mesh = new Mesh(vertices,indices, name);
         meshs->push_back(mesh);
 
         index++;

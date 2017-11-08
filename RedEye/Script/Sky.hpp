@@ -23,30 +23,67 @@ public:
 
 	Spirit3D * ball;
 	PBRMaterial * mm;
+	PBRMaterial * metal;
+	PBRMaterial * metal2;
 
-
-	GLTexture * albedoMap;
-
+	PBRMaterial * wood;
 	void Start() {
-		//glEnable(GL_CULL_FACE);
-		//glFrontFace(GL_CCW);
+		glEnable(GL_CULL_FACE);
+		glFrontFace(GL_CCW);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 		target = new GLRenderTarget(screen->getWidth(), screen->getHeight(), RED_TARGET_SCREEN);
 		mainCamera = new Camera(30.0f, screen->getWidth(), screen->getHeight(), 0.1f, 1000.0f);
 
-		mainCamera->setHdriSkybox("c://Red3DEngine/Texture/hdr/newport_loft.hdr");
+		mainCamera->setHdriSkybox("c://RedEyeEngine/res/hdri/hdri1.hdr");
+		//mainCamera->setHdriSkybox("c://RedEyeEngine/res/hdri/hdri1.hdr");
+		//mainCamera->setHdriSkybox("c://RedEyeEngine/res/hdri/newport_loft.hdr");
 
+		/*
 		mm = new PBRMaterial();
+		mm->meshBindName = "miaowu";
 		mm->setCamera(mainCamera);
 		mm->setAlbedoMap("C://RedEyeEngine/res/3dcoat/color.jpg");
 		mm->setMetallicMap("C://RedEyeEngine/res/3dcoat/metalness.jpg");
 		mm->setRoughnessMap("C://RedEyeEngine/res/3dcoat/gloss.jpg");
 		mm->setNormalMap("C://RedEyeEngine/res/3dcoat/nmap.jpg");
 		mm->setAoMap("C://RedEyeEngine/res/3dcoat/ao.jpg");
+		*/
 
-		//ball = new Spirit3D("C://RedEyeEngine/res/3dcoat/M");
-		ball = new Spirit3D("D://stg/M");
-		ball->AddMaterial(mm);
+
+
+		wood = new PBRMaterial();
+		wood->meshBindName = "part2";
+		wood->setCamera(mainCamera);
+		wood->setAlbedoMap("C://RedEyeEngine/res/flintlock/wood_albedo.jpg");
+		wood->setMetallicMap("C://RedEyeEngine/res/flintlock/wood_metallic.jpg");
+		wood->setRoughnessMap("C://RedEyeEngine/res/flintlock/wood_roughness.jpg");
+		wood->setNormalMap("C://RedEyeEngine/res/flintlock/wood_normal.jpg");
+		wood->setAoMap("C://RedEyeEngine/res/flintlock/wood_AO.jpg");
+
+		metal = new PBRMaterial();
+		metal->meshBindName = "part0";
+		metal->setCamera(mainCamera);
+		metal->setAlbedoMap("C://RedEyeEngine/res/flintlock/metalmain_albedo.jpg");
+		metal->setMetallicMap("C://RedEyeEngine/res/flintlock/metalmain_metallic.jpg");
+		metal->setRoughnessMap("C://RedEyeEngine/res/flintlock/metalmain_roughness.jpg");
+		metal->setNormalMap("C://RedEyeEngine/res/flintlock/metalmain_normal.jpg");
+		metal->setAoMap("C://RedEyeEngine/res/flintlock/metalmain_AO.jpg");
+
+		metal2 = new PBRMaterial();
+		metal2->meshBindName = "part1";
+		metal2->setCamera(mainCamera);
+		metal2->setAlbedoMap("C://RedEyeEngine/res/flintlock/Metal2_albedo.jpg");
+		metal2->setMetallicMap("C://RedEyeEngine/res/flintlock/Metal2_metallic.jpg");
+		metal2->setRoughnessMap("C://RedEyeEngine/res/flintlock/Metal2_roughness.jpg");
+		metal2->setNormalMap("C://RedEyeEngine/res/flintlock/Metal2_normal.jpg");
+		metal2->setAoMap("C://RedEyeEngine/res/flintlock/Metal2_AO.jpg");
+
+		ball = new Spirit3D("C://RedEyeEngine/res/flintlock/M");
+
+		ball->AddMaterial(wood);
+		ball->AddMaterial(metal);
+		ball->AddMaterial(metal2);
 	}
 	void Update() {
 		glEnable(GL_DEPTH_TEST);

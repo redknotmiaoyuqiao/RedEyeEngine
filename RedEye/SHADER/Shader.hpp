@@ -199,8 +199,8 @@ static const char * PBR_FRAGMENT = SHADER(
             {
                 // material properties
                 vec3 albedo = pow(texture(albedoMap, TexCoords).rgb, vec3(2.2));
-                float metallic = texture(metallicMap, TexCoords).r * 1.5;
-                float roughness = texture(roughnessMap, TexCoords).r * 0.3;
+                float metallic = texture(metallicMap, TexCoords).r * 1.0;
+                float roughness = texture(roughnessMap, TexCoords).r * 1.0;
                 float ao = texture(aoMap, TexCoords).r;
 
                 // input lighting data
@@ -276,12 +276,12 @@ static const char * PBR_FRAGMENT = SHADER(
                 // gamma correct
                 color = pow(color, vec3(1.0/2.2));
 
-                FragColor = vec4(color , 1.0);
+                FragColor = vec4(color, 1.0);
 
 
 
 
-               //FragColor = vec4(texture(metallicMap, TexCoords).xyz  , 1.0);
+               //FragColor = vec4(texture(normalMap, TexCoords).xyz  , 1.0);
             }
             );
 

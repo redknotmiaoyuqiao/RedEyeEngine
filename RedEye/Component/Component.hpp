@@ -156,9 +156,9 @@ public:
 class Material {
 public:
 	GLProgram * glProgram;
-	char * meshBindName;
+	std::string meshBindName;
 
-	void setMeshBindName(char * meshBindName);
+	void setMeshBindName(std::string meshBindName);
 	virtual void Use() = 0;
 };
 
