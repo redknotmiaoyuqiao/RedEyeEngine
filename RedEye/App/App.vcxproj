@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{A3A1CF69-3838-4C57-B60B-CDA4E3376C91}</ProjectGuid>
-    <RootNamespace>File</RootNamespace>
+    <ProjectGuid>{1F63E8D0-436F-41CB-8029-FCC479103C0C}</ProjectGuid>
+    <RootNamespace>App</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>../glad/include/;../;$(IncludePath)</IncludePath>
+    <IncludePath>../glm/;../../winLib/GLFW/include/;../glad/include/;../;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)out</OutDir>
     <IntDir>$(SolutionDir)obj</IntDir>
   </PropertyGroup>
@@ -115,12 +115,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="File.hpp" />
-    <ClInclude Include="IMAGE\stb_image.h" />
+    <ClCompile Include="App.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ImageFile.cpp" />
-    <ClCompile Include="IMAGE\stb_image.cpp" />
+    <ClInclude Include="App.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

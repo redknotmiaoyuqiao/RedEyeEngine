@@ -1,4 +1,5 @@
 #pragma once
+#pragma warning(disable:4996)
 
 #include <string>
 #include "RedLog/Debug.hpp"
@@ -17,12 +18,14 @@ class File{
 public:
     static std::string getResPath(std::string path){
         //return "/Users/redknot/RedEyeEngine/res/" + path;
-        return "/storage/emulated/0/res/" + path;
+		return "C://RedEyeEngine/res/" + path;
+        //return "/storage/emulated/0/res/" + path;
     }
 
     static char * getResPathCStr(std::string path){
         //std::string p = "/Users/redknot/RedEyeEngine/res/" + path;
-        std::string p = "/storage/emulated/0/res/" + path;
+		std::string p = "C://RedEyeEngine/res/" + path;
+        //std::string p = "/storage/emulated/0/res/" + path;
 
         RedLog("\nPath:%s\n",p.c_str());
 

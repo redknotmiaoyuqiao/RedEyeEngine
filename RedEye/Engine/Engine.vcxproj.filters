@@ -21,9 +21,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

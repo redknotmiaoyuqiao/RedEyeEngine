@@ -72,7 +72,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)out</OutDir>
     <IntDir>$(SolutionDir)obj</IntDir>
-    <IncludePath>../glm/;../glad/include/;../;$(IncludePath)</IncludePath>
+    <IncludePath>../../winLib/GLFW/include/;../glm/;../glad/include/;../;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

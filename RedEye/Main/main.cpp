@@ -40,7 +40,7 @@ int main()
 	//int width = 800;
 	//int height = 640;
 
-	bool isFullScreen = false;
+	bool isFullScreen = true;
 	GLFWmonitor* pMonitor = isFullScreen ? glfwGetPrimaryMonitor() : NULL;
 
 	window = glfwCreateWindow(width, height, "RedEye", pMonitor, NULL);
@@ -83,6 +83,8 @@ int main()
 
     App * app = new App();
     app->Start();
+
+	glEnable(GL_MULTISAMPLE);
 
 	while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0)
 	{

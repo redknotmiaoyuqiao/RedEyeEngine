@@ -14,8 +14,8 @@ HdriSkybox::HdriSkybox(char * filePath)
 	this->hdriTexture = new GLTexture();
 	this->hdriTexture->LoadHdrImage(filePath);
 
-	int width = 1024;
-	int height = 1024;
+	int width = 512;
+	int height = 512;
 
 	// pbr: setup framebuffer
 	// ----------------------

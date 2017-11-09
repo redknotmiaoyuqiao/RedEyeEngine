@@ -102,8 +102,8 @@ public:
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LEQUAL);
 
-        //Mouse();
-        //WASD();
+        Mouse();
+        WASD();
 
 		target->setWidthAndHeight(screen->getWidth(), screen->getHeight());
 		target->useFrameBuffer();

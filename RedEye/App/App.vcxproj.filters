@@ -15,15 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="App.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\out\RedGL.lib" />
-    <Library Include="..\out\File.lib" />
-    <Library Include="..\out\Engine.lib" />
-    <Library Include="..\out\Component.lib" />
-    <Library Include="..\out\App.lib" />
+    <ClInclude Include="App.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

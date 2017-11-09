@@ -122,6 +122,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Library Include="..\out\App.lib" />
     <Library Include="..\out\Component.lib" />
     <Library Include="..\out\Engine.lib" />
     <Library Include="..\out\File.lib" />
