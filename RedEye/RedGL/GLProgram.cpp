@@ -50,7 +50,7 @@ void GLProgram::LinkProgram()
     if ( InfoLogLength > 0 ){
         std::vector<char> ProgramErrorMessage(InfoLogLength+1);
         glGetProgramInfoLog(ProgramId, InfoLogLength, NULL, &ProgramErrorMessage[0]);
-        printf("%s\n", &ProgramErrorMessage[0]);
+        RedLog("%s\n", &ProgramErrorMessage[0]);
     }
 
     for(int i=0;i<size;i++){
@@ -94,5 +94,3 @@ void GLProgram::put1f(char * name,GLfloat value)
     this->UseProgram();
     glUniform1f(this->GetUniformLocation(name), value);
 }
-
-

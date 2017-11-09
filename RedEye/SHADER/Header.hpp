@@ -4,7 +4,7 @@
 
 #ifdef __ANDROID__
 
-#define	SHADER(shader) "#version 300 es\n" STRINGIZE(shader)
+#define	SHADER(shader) "#version 300 es\n precision highp float;\n" STRINGIZE(shader)
 
 #else
 

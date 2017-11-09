@@ -53,5 +53,8 @@
     <ClInclude Include="..\SHADER\Shader.hpp">
       <Filter>头文件\Shader</Filter>
     </ClInclude>
+    <ClInclude Include="..\Script\Sky.hpp">
+      <Filter>头文件\User</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,7 +6,14 @@
 #include "RedGL/RedGL.hpp"
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
+
+#ifdef __ANDROID__
+#include <EGL/egl.h>
+#include <GLES3/gl3.h>
+#include <GLES3/gl3platform.h>
+#else
 #include <glad/glad.h>
+#endif
 
 
 float vertices_s[] = {

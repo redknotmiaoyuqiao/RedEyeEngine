@@ -20,12 +20,14 @@ HEADERS += \
     Engine/Engine.hpp \
     File/File.hpp \
     File/IMAGE/stb_image.h \
-    RedGL/redgl.hpp \
+    RedGL/RedGL.hpp \
     RedLog/Debug.hpp \
     Script/PBR.hpp \
     Script/test.hpp \
     SHADER/Header.hpp \
-    SHADER/Shader.hpp
+    SHADER/Shader.hpp \
+    Script/Sky.hpp \
+    App/App.hpp
 
 SOURCES += \
     Component/Camera.cpp \
@@ -33,7 +35,6 @@ SOURCES += \
     Component/HdriSkybox.cpp \
     Component/Light.cpp \
     Component/Skybox.cpp \
-    Engine/Engine.cpp \
     Engine/Input.cpp \
     Engine/Mesh.cpp \
     Engine/Model.cpp \
@@ -46,4 +47,8 @@ SOURCES += \
     RedGL/GLShader.cpp \
     RedGL/GLTexture.cpp \
     RedGL/GLVAO.cpp \
-    glad/src/glad.c
+    glad/src/glad.c \
+    Component/Material.cpp \
+    Component/PBRMaterial.cpp \
+    Component/Spirit3D.cpp \
+    App/App.cpp

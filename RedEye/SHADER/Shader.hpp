@@ -79,28 +79,28 @@ static const char * s_FRAGMENT = SHADER(
              *
              */
 
-            static const char * PBR_VERTEX = SHADER(
-                            layout (location = 0) in vec3 aPos;
-                            layout (location = 1) in vec3 aNormal;
-                            layout (location = 2) in vec3 aTexCoords;
+static const char * PBR_VERTEX = SHADER(
+            layout (location = 0) in vec3 aPos;
+            layout (location = 1) in vec3 aNormal;
+            layout (location = 2) in vec3 aTexCoords;
 
-                            out vec2 TexCoords;
-                            out vec3 WorldPos;
-                            out vec3 Normal;
+            out vec2 TexCoords;
+            out vec3 WorldPos;
+            out vec3 Normal;
 
-                            uniform mat4 projection;
-                            uniform mat4 view;
-                            uniform mat4 model;
+            uniform mat4 projection;
+            uniform mat4 view;
+            uniform mat4 model;
 
-                            void main()
-                            {
-                                TexCoords = aTexCoords.xy;
-                                WorldPos = vec3(model * vec4(aPos, 1.0));
-                                Normal = mat3(model) * aNormal;
+            void main()
+            {
+                TexCoords = aTexCoords.xy;
+                WorldPos = vec3(model * vec4(aPos, 1.0));
+                Normal = mat3(model) * aNormal;
 
-                                gl_Position =  projection * view * vec4(WorldPos, 1.0);
-                            }
-                        );
+                gl_Position =  projection * view * vec4(WorldPos, 1.0);
+            }
+        );
 
 
 static const char * PBR_FRAGMENT = SHADER(
@@ -128,7 +128,11 @@ static const char * PBR_FRAGMENT = SHADER(
             uniform vec3 camPos;
 
             const float PI = 3.14159265359;
-
+            // ----------------------------------------------------------------------------
+            // Easy trick to get tangent-normals to world-space to keep PBR code simplified.
+            // Don't worry if you don't get what's going on; you generally want to do normal
+            // mapping the usual way for performance anways; I do plan make a note of this
+            // technique somewhere later in the normal mapping tutorial.
             vec3 getNormalFromMap()
             {
                 vec3 tangentNormal = texture(normalMap, TexCoords).xyz * 2.0 - 1.0;
@@ -139,11 +143,13 @@ static const char * PBR_FRAGMENT = SHADER(
                 vec2 st2 = dFdy(TexCoords);
 
                 vec3 N   = normalize(Normal);
-                vec3 T  = -normalize(Q1*st2.t - Q2*st1.t);
+                vec3 T  = normalize(Q1*st2.t - Q2*st1.t);
                 vec3 B  = -normalize(cross(N, T));
                 mat3 TBN = mat3(T, B, N);
 
                 return normalize(TBN * tangentNormal);
+                //return tangentNormal;
+                //return normalize(Normal);
             }
             // ----------------------------------------------------------------------------
             float DistributionGGX(vec3 N, vec3 H, float roughness)
@@ -195,8 +201,8 @@ static const char * PBR_FRAGMENT = SHADER(
             {
                 // material properties
                 vec3 albedo = pow(texture(albedoMap, TexCoords).rgb, vec3(2.2));
-                float metallic = texture(metallicMap, TexCoords).r * 1.5;
-                float roughness = texture(roughnessMap, TexCoords).r * 0.5;
+                float metallic = texture(metallicMap, TexCoords).r;
+                float roughness = texture(roughnessMap, TexCoords).r;
                 float ao = texture(aoMap, TexCoords).r;
 
                 // input lighting data
@@ -213,6 +219,7 @@ static const char * PBR_FRAGMENT = SHADER(
                 vec3 Lo = vec3(0.0);
                 for(int i = 0; i < 4; ++i)
                 {
+                    /*
                     // calculate per-light radiance
                     vec3 L = normalize(lightPositions[i] - WorldPos);
                     vec3 H = normalize(V + L);
@@ -245,6 +252,7 @@ static const char * PBR_FRAGMENT = SHADER(
 
                     // add to outgoing radiance Lo
                     Lo += (kD * albedo / PI + specular) * radiance * NdotL; // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+                    */
                 }
 
                 // ambient lighting (we now use IBL as the ambient term)
@@ -257,6 +265,7 @@ static const char * PBR_FRAGMENT = SHADER(
                 vec3 irradiance = texture(irradianceMap, N).rgb;
                 vec3 diffuse      = irradiance * albedo;
 
+                // sample both the pre-filter map and the BRDF lut and combine them together as per the Split-Sum approximation to get the IBL specular part.
                 const float MAX_REFLECTION_LOD = 4.0;
                 vec3 prefilteredColor = textureLod(prefilterMap, R,  roughness * MAX_REFLECTION_LOD).rgb;
                 vec2 brdf  = texture(brdfLUT, vec2(max(dot(N, V), 0.0), roughness)).rg;
@@ -272,12 +281,8 @@ static const char * PBR_FRAGMENT = SHADER(
                 color = pow(color, vec3(1.0/2.2));
 
                 FragColor = vec4(color , 1.0);
-
-
-
-
-               //FragColor = vec4(texture(brdfLUT, TexCoords).xyz  , 1.0);
             }
+
             );
 
 

@@ -10,8 +10,6 @@ Model::Model(std::string path)
     while(true){
         std::string file_path = path + "/part" + intToString(index);
 
-        RedLog("wwwwwwwww:\n%s\n\n",file_path.c_str());
-
         FILE * fb = fopen(file_path.c_str(), "rb");
 
         if(fb == NULL){
@@ -22,6 +20,8 @@ Model::Model(std::string path)
 
         fread(&numVertices, sizeof(unsigned int), 1, fb);
         fread(&numFaces, sizeof(unsigned int), 1, fb);
+
+		RedLog("\nLoad Mesh Form:\n%s\n\n", file_path.c_str());
         RedLog("\nnumVertices:%d\n",numVertices);
         RedLog("\nnumFaces:%d\n",numFaces);
 
@@ -74,7 +74,8 @@ Model::Model(std::string path)
         free(indicesArray);
 
 
-        Mesh * mesh = new Mesh(vertices,indices);
+		std::string name = "part" + intToString(index);
+        Mesh * mesh = new Mesh(vertices,indices, name);
         meshs->push_back(mesh);
 
         index++;

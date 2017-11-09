@@ -75,6 +75,17 @@ void Camera::setCameraUp(float x,float y,float z)
     cameraUp[2] = z;
 }
 
+void Camera::setHdriSkybox(char * path)
+{
+	this->skybox = new HdriSkybox(path);
+}
+
+void Camera::DrawSkybox()
+{
+	if (this->skybox != NULL) {
+		this->skybox->Draw(this);
+	}
+}
 
 glm::mat4 Camera::getProjection()
 {

@@ -1,6 +1,5 @@
 #include "RedGL/RedGL.hpp"
 #include "RedLog/Debug.hpp"
-#include <glad/glad.h>
 
 GLRenderTarget::GLRenderTarget(int width,int height,int target)
 {

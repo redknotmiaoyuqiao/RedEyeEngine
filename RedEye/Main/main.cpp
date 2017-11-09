@@ -3,6 +3,7 @@
 #include <glad/glad.h>  
 
 #include "Engine/Engine.hpp"
+#include "App/App.hpp"
 
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -36,6 +37,9 @@ int main()
 	int width = 2560;
 	int height = 1600;
 
+	//int width = 800;
+	//int height = 640;
+
 	bool isFullScreen = false;
 	GLFWmonitor* pMonitor = isFullScreen ? glfwGetPrimaryMonitor() : NULL;
 
@@ -53,7 +57,6 @@ int main()
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, mouse_callback);
-
 
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
@@ -78,18 +81,18 @@ int main()
 	}
 	*/
 
-	Engine * RedEngine = new Engine();
-	RedEngine->Start();
+    App * app = new App();
+    app->Start();
 
 	while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0)
 	{
-		RedEngine->Update();
+        app->Update();
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-	RedEngine->End();
+    app->End();
 
-	delete RedEngine;
+    delete app;
 
 	glfwTerminate();
 

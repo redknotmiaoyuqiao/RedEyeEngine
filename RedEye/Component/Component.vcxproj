@@ -119,7 +119,10 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="HdriSkybox.cpp" />
     <ClCompile Include="Light.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="PBRMaterial.cpp" />
     <ClCompile Include="Skybox.cpp" />
+    <ClCompile Include="Spirit3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.hpp" />

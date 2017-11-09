@@ -8,12 +8,20 @@
 #include <sstream>
 #include <iostream>
 
-class Engine{
-public:
-    void Start();
-    void Update();
-    void End();
-};
+#ifdef __ANDROID__
+#include <EGL/egl.h>
+#include <GLES3/gl3.h>
+#include <GLES3/gl3platform.h>
+
+#define GLFW_KEY_W 0
+#define GLFW_KEY_A 1
+#define GLFW_KEY_S 2
+#define GLFW_KEY_D 3
+
+#else
+#include <GLFW/glfw3.h>
+#include <glad/glad.h>
+#endif
 
 class RedEyeBehaviour{
 public:
@@ -90,8 +98,10 @@ private:
 
     unsigned int * arrayIndices;
 public:
+	std::string name;
+
     GLVAO * vao;
-    Mesh(std::vector<Vertex*> * vertices, std::vector<GLuint> * indices);
+    Mesh(std::vector<Vertex*> * vertices, std::vector<GLuint> * indices, std::string name);
     ~Mesh();
     void DrawVAO();
 };

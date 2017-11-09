@@ -8,17 +8,20 @@
 #ifdef __ANDROID__
 #include <EGL/egl.h>
 #include <GLES3/gl3.h>
+#include <GLES3/gl3platform.h>
 #else
-#include <glad/glad.h> 
+#include <glad/glad.h>
 #endif
 
 #ifdef __ANDROID__
 
 #include <android/log.h>
 #define LOG_TAG "opengl"
-#define RedLog(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 #define LOG_INFO(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 #define LOG_ERROR(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
+
+#define RedLog(format, ...) RedPrintf(__FILE__, __FUNCTION__ ,__LINE__,format, ##__VA_ARGS__)
+#define BaseRedLog(format, ...) LOG_ERROR(format, ##__VA_ARGS__)
 
 #else
 
@@ -89,9 +92,10 @@ static GLenum glCheckError_(const char *file, int line)
     GLenum errorCode;
     while ((errorCode = glGetError()) != GL_NO_ERROR)
     {
-        char * error;
+        char * error = "aaa";
         switch (errorCode)
         {
+          /*
             case GL_INVALID_ENUM:                  error = "INVALID_ENUM"; break;
             case GL_INVALID_VALUE:                 error = "INVALID_VALUE"; break;
             case GL_INVALID_OPERATION:             error = "INVALID_OPERATION"; break;
@@ -99,6 +103,7 @@ static GLenum glCheckError_(const char *file, int line)
             case GL_STACK_UNDERFLOW:               error = "STACK_UNDERFLOW"; break;
             case GL_OUT_OF_MEMORY:                 error = "OUT_OF_MEMORY"; break;
             case GL_INVALID_FRAMEBUFFER_OPERATION: error = "INVALID_FRAMEBUFFER_OPERATION"; break;
+            */
         }
         //std::cout << error << " | " << file << " (" << line << ")" << std::endl;
 
@@ -106,4 +111,3 @@ static GLenum glCheckError_(const char *file, int line)
     }
     return errorCode;
 }
-
