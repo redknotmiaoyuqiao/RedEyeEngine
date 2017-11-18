@@ -49,16 +49,18 @@ public:
 		//mainCamera->setHdriSkybox("c://RedEyeEngine/res/hdri/hdri1.hdr");
         mainCamera->setHdriSkybox(File::getResPathCStr("hdri/newport_loft.hdr"));
 
-
+		
+		/*
 		mm = new PBRMaterial();
         mm->meshBindName = "part0";
 		mm->setCamera(mainCamera);
-        mm->setAlbedoMap(File::getResPathCStr("3dcoat/color.jpg"));
-        mm->setMetallicMap(File::getResPathCStr("3dcoat/metalness.jpg"));
-        mm->setRoughnessMap(File::getResPathCStr("3dcoat/gloss.jpg"));
-        mm->setNormalMap(File::getResPathCStr("3dcoat/nmap.jpg"));
-        mm->setAoMap(File::getResPathCStr("3dcoat/ao.jpg"));
-
+        mm->setAlbedoMap(File::getResPathCStr("3dcoat/T2/export3dcoat_lambert3SG_BaseColor.jpg"));
+        mm->setMetallicMap(File::getResPathCStr("3dcoat/T2/export3dcoat_lambert3SG_BaseColor.jpg"));
+        mm->setRoughnessMap(File::getResPathCStr("3dcoat/T2/export3dcoat_lambert3SG_BaseColor.jpg"));
+        mm->setNormalMap(File::getResPathCStr("3dcoat/T2/export3dcoat_lambert3SG_Normal.jpg"));
+        mm->setAoMap(File::getResPathCStr("3dcoat/T2/export3dcoat_lambert3SG_Metallic.jpg"));
+		*/
+		
 
 
 
@@ -90,7 +92,7 @@ public:
         metal2->setAoMap(File::getResPathCStr("flintlock/Metal2_AO.jpg"));
 
         ball = new Spirit3D(File::getResPathCStr("flintlock/M"));
-        //ball = new Spirit3D(File::getResPathCStr("3dcoat/M"));
+		//ball = new Spirit3D(File::getResPathCStr("3dcoat/M"));
         //ball->AddMaterial(mm);
 
 		ball->AddMaterial(wood);

@@ -40,7 +40,7 @@ int main()
 	//int width = 800;
 	//int height = 640;
 
-	bool isFullScreen = true;
+	bool isFullScreen = false;
 	GLFWmonitor* pMonitor = isFullScreen ? glfwGetPrimaryMonitor() : NULL;
 
 	window = glfwCreateWindow(width, height, "RedEye", pMonitor, NULL);
